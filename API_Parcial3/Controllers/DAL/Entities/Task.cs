@@ -4,15 +4,9 @@ namespace API_Parcial3.Controllers.DAL.Entities
 {
     public class Task : AuditDatabase
     {
-        private Guid _id;
-
         [Key]
         [Required]
-        public Guid Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
+        public Guid Id { get; set; }
 
         [Display(Name = "Titulo")]
         [MaxLength(50, ErrorMessage = "The field {0} must have a maximum of {1} character")]
@@ -43,9 +37,5 @@ namespace API_Parcial3.Controllers.DAL.Entities
 
         [Display(Name = "Fecha Finalización")]
         public DateTime CompletionDate { get; set; }
-        public Task()
-        {
-            Id = Guid.NewGuid();
-        }
     }
 }
