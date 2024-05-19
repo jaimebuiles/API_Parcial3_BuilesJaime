@@ -22,7 +22,6 @@ namespace API_Parcial3.Controllers
             return Ok(tasks);
         }
 
-
         [HttpGet("GetTaskById/{id}")]
         public async Task<ActionResult<Task>> GetTaskByIdAsync(Guid id)
         {
@@ -39,9 +38,8 @@ namespace API_Parcial3.Controllers
         {
             try
             {
-                var newTask = await _taskServices.CreateTaskAsync(task);
-                if (newTask == null) return NotFound();
-                return Ok(newTask); // Tarea creada con éxito
+                await _taskServices.CreateTaskAsync(task);
+                return Ok(); // Tarea creada con éxito
             }
             catch (ArgumentException ex)
             {
@@ -76,5 +74,6 @@ namespace API_Parcial3.Controllers
                 return BadRequest(ex.Message); // Error al eliminar tareas completadas
             }
         }
+
     }
 }
