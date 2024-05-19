@@ -1,14 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Reflection.Emit;
 
 namespace API_Parcial3.Controllers.DAL
 {
-    public class DatabaseContext
+    public class DatabaseContext : DbContext
     {
+        public DatabaseContext(DbContextOptions<DatabaseContext> option) : base(option)
+        {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Task>().HasIndex(c => c.Id).IsUnique();
+
+        }
 
         #region DbSet
-        
+        public DbSet<Task> Tasks { get; set; }
 
         #endregion
     }

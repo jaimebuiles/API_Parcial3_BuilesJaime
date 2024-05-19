@@ -23,7 +23,7 @@ namespace API_Parcial3.Controllers.DAL.Entities
         public String IsCompleted { get; set; }
 
         [Display(Name = "Prioridad")]
-        [MaxLength(50, ErrorMessage = "The field {0} requires the assignment of  (High, Medium, Low)")]
+        [MaxLength(7, ErrorMessage = "The field {0} requires the assignment of  (High, Medium, Low)")]
         [Required]
         public String Priority { get; set; }
 
