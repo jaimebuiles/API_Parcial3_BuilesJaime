@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Task = API_Parcial3.Controllers.DAL.Entities.Task;
 
 namespace API_Parcial3.Controllers.DAL
 {
@@ -12,11 +13,11 @@ namespace API_Parcial3.Controllers.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Entities.Task>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Task>().HasIndex(c => c.Id).IsUnique();
         }
 
         #region DbSet
-        public DbSet<Entities.Task> Tasks { get; set; }
+        public DbSet<Task> Tasks { get; set; }
 
         #endregion
     }

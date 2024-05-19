@@ -17,9 +17,8 @@ namespace API_Parcial3.Controllers.DAL.Entities
         public String Description { get; set; }
 
         [Display(Name = "Completado")]
-        [MaxLength(50, ErrorMessage = "The campo {0} must have a maximum of {1} character")]
         [Required(ErrorMessage = "Field {0} requires yes or no")]
-        public String IsCompleted { get; set; }
+        public Boolean IsCompleted { get; set; }
 
         [Display(Name = "Prioridad")]
         [MaxLength(50, ErrorMessage = "The field {0} requires the assignment of  (High, Medium, Low)")]
