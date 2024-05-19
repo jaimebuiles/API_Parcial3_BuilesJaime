@@ -36,7 +36,6 @@ namespace API_Parcial3.Controllers.DAL.Entities
         public DateTime CreatedDate { get; set; }
 
         [Display(Name = "Fecha Finalización")]
-        [MaxLength(50, ErrorMessage = "The field {0} requires a date to be assigned")]
         public DateTime CompletionDate { get; set; }
     }
 }
