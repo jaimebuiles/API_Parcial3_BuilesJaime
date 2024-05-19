@@ -1,4 +1,5 @@
 using API_Parcial3.Controllers.DAL;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
