@@ -4,9 +4,15 @@ namespace API_Parcial3.Controllers.DAL.Entities
 {
     public class Task : AuditDatabase
     {
+        private Guid _id;
+
         [Key]
         [Required]
-        public Guid Id { get; set; }
+        public Guid Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         [Display(Name = "Titulo")]
         [MaxLength(50, ErrorMessage = "The field {0} must have a maximum of {1} character")]
@@ -23,7 +29,7 @@ namespace API_Parcial3.Controllers.DAL.Entities
         public String IsCompleted { get; set; }
 
         [Display(Name = "Prioridad")]
-        [MaxLength(7, ErrorMessage = "The field {0} requires the assignment of  (High, Medium, Low)")]
+        [MaxLength(50, ErrorMessage = "The field {0} requires the assignment of  (High, Medium, Low)")]
         [Required]
         public String Priority { get; set; }
 
@@ -37,5 +43,9 @@ namespace API_Parcial3.Controllers.DAL.Entities
 
         [Display(Name = "Fecha Finalización")]
         public DateTime CompletionDate { get; set; }
+        public Task()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }
