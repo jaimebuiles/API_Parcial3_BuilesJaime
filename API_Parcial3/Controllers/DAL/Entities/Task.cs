@@ -2,7 +2,7 @@
 
 namespace API_Parcial3.Controllers.DAL.Entities
 {
-    public class Task
+    public class Task : AuditDatabase
     {
         [Key]
         [Required]
