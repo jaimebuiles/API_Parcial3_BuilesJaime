@@ -19,34 +19,45 @@ namespace API_Parcial3.Controllers.Domain.Services
         {
             return (IEnumerable<Task>)await _dbContext.Tasks.OrderBy(t => t.Priority).ToListAsync();
         }
-        public async Task<Task> GetTaskById(Guid id)
+        public async Task<Task> GetTaskByIdAsync(Guid id)
         {
             var task = await _dbContext.Tasks.FirstOrDefaultAsync(i => i.Id == id);
             return task;
         }
-        public async Task<IEnumerable<Task>> GetTaskByDueDateAsync(DateTime dueDate)
+        public async Task<IEnumerable<Task>> GetTaskByDueDateAsync(DateTime duedate)
         {
-            var task = await _dbContext.Tasks.Where(d => d.DueDate == dueDate).ToListAsync();
+            var task = await _dbContext.Tasks.Where(d => d.DueDate == duedate).ToListAsync();
             return task;
         }
+
         public async Task<Task> CreateTaskAsync(Task task)
         {
-            task.Id = Guid.NewGuid();
-            task.Title = nameof(Task);
-            task.Description = nameof(Task);
-            task.Priority = 
+            if (task.DueDate < DateTime.Now)
+            {
+                throw new ArgumentException("La fecha de vencimiento no puede ser en el pasado");
+            }
             task.DueDate = DateTime.Now;
-            task.CreateDate = ;
+            _dbContext.Tasks.Add(task);
+            await _dbContext.SaveChangesAsync();
 
-
+            return task;
         }
-        public async Task<Task> UpdateTaskCompetedAsync(DAL.Entities.Task task)
+
+        public async Task<Task> UpdateTaskCompetedAsync(Task task)
         {
-            throw new NotImplementedException();
+            task.ModifiDate = DateTime.Now;
+            _dbContext.Tasks.Update(task);
+            await _dbContext.SaveChangesAsync();
+
+            return task;
         }
+
         public async Task<Task> DeleteTaskAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var task = await GetTaskByIdAsync(id);
+
+            _dbContext.Tasks.Remove(task);
+            return task;
         }
     }
 }

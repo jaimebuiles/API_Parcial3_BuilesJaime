@@ -11,10 +11,10 @@ public interface ITask
     Task<Task> GetTaskByIdAsync(Guid id);
 
     //Obtener tareas por fecha de vencimiento.
-    Task<IEnumerable<Task>> GetTaskByDueDateAsync(Task task);
+    Task<IEnumerable<Task>> GetTaskByDueDateAsync(DateTime DueDate);
 
     //Crear nuevas tareas.
-    Task<Task> CreateTaskAsync(Boolean task);
+    Task<Task> CreateTaskAsync(Task task);
 
     //Modificar una tarea cuando se complete
     Task<Task> UpdateTaskCompetedAsync(Task task);
