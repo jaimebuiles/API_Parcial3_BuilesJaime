@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace API_Parcial3.Controllers.DAL
 {
@@ -14,7 +12,7 @@ namespace API_Parcial3.Controllers.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Task>().HasIndex(c => c.Id).IsUnique();
+            modelBuilder.Entity<Entities.Task>().HasIndex(c => c.Id).IsUnique();
         }
 
         #region DbSet
