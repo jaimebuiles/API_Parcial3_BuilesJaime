@@ -2,7 +2,7 @@
 using Task = API_Parcial3.Controllers.DAL.Entities.Task;
 
 
-public interface ITask
+public interface ITaskservices
 {
     //Listar tareas ordenadas de la más prioritaria a la menos prioritaria
     Task<IEnumerable<Task>> GetTaskOrderbyPriorityAsync(Task task);

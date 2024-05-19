@@ -5,7 +5,7 @@ using Task = API_Parcial3.Controllers.DAL.Entities.Task;
 
 namespace API_Parcial3.Controllers.Domain.Services
 {
-    public class TaskServices : ITask
+    public class TaskServices : ITaskservices
     {
         // Create the inyection of DB
         private readonly DatabaseContext _dbContext;
