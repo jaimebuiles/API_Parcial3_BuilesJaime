@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Domain\" />
+    <Folder Include="Controllers\Domain\Services\" />
   </ItemGroup>
 
 </Project>
