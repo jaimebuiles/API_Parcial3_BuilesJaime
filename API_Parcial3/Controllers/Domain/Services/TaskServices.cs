@@ -17,7 +17,7 @@ namespace API_Parcial3.Controllers.Domain.Services
         // 
         public async Task<IEnumerable<Task>> GetTaskOrderbyPriorityAsync(Task task)
         {
-            return (IEnumerable<Task>)await _dbContext.Tasks.OrderBy(t => t.Priority).ToListAsync();
+            return await _dbContext.Tasks.OrderBy(t => t.Priority).ToListAsync();
         }
         public async Task<Task> GetTaskByIdAsync(Guid id)
         {
