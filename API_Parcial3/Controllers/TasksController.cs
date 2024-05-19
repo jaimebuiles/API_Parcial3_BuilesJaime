@@ -15,8 +15,8 @@ namespace API_Parcial3.Controllers
             _taskServices = taskServices;
         }
 
-        [HttpGet, ActionName("Get")]
-        [HttpGet("GetAll")]
+        [HttpGet, ActionName("GetTaskOrderby")]
+        [HttpGet("GetTaskOrderby")]
         public async Task<ActionResult<IEnumerable<Task>>> GetTaskOrderbyPriorityAsync(Task task)
                                                            
         {
@@ -24,7 +24,7 @@ namespace API_Parcial3.Controllers
             return Ok(tasks);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetTaskById")]
         public async Task<ActionResult<Task>> GetTaskByIdAsync(Guid id)
         {
             var task = await _taskServices.GetTaskByIdAsync(id);
@@ -35,7 +35,7 @@ namespace API_Parcial3.Controllers
             return Ok(task);
         }
 
-        [HttpPost()]
+        [HttpPost("CreateTask")]
         public async Task<ActionResult> CreateTaskAsync(Task task)
         {
             try
@@ -49,8 +49,8 @@ namespace API_Parcial3.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        [Route("Delete")]
+        [HttpPut("UpdateTask")]
+        [Route("UpdateTask")]
         public async Task<ActionResult> UpdateTaskCompetedAsync(Task task)
         {
             try
@@ -64,8 +64,8 @@ namespace API_Parcial3.Controllers
             }
         }
 
-        [HttpDelete("Delete")]
-        [Route("Delete")]
+        [HttpDelete("DeleteTask")]
+        [Route("DeleteTask")]
         public async Task<ActionResult> DeleteTaskAsync(Guid id)
         {
             try
