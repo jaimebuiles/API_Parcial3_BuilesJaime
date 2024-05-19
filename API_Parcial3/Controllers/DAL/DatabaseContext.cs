@@ -15,11 +15,10 @@ namespace API_Parcial3.Controllers.DAL
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Task>().HasIndex(c => c.Id).IsUnique();
-
         }
 
         #region DbSet
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Entities.Task> Tasks { get; set; }
 
         #endregion
     }
